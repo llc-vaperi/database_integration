@@ -1,16 +1,16 @@
-import mongoose from "mongoose";
+import  mongoose  from 'mongoose';
 
-const url = process.env.MONGODB_URI as string;
-
-if (!url) {
-  throw new Error("Please provide MONGODB_URI in the environment variables");
-}
+const client = "mongodb+srv://niksonagamer777_db_user:GphyzJMIS4joAoqR@cluster0.xzyubtu.mongodb.net/";
 
 export async function connectToMongoDB() {
   try {
-    await mongoose.connect(url);
-    console.log("connected to mongo");
-  } catch (error) {
-    console.log(error);
+    const connection = await mongoose.connect(client);
+    console.log("You successfully connected to MongoDB!");
+    return connection
+  } catch (err) {
+    console.dir(err);
   }
 }
+
+
+
